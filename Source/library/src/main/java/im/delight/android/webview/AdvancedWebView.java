@@ -462,10 +462,12 @@ public class AdvancedWebView extends BridgeWebView {
 
 		setThirdPartyCookiesEnabled(true);
 
-		super.setWebViewClient(new WebViewClient() {
+		super.setWebViewClient(new AdvancedWebViewClient(this){
 
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
+				super.onPageStarted(view, url, favicon);
+
 				if (!hasError()) {
 					if (mListener != null) {
 						mListener.onPageStarted(url, favicon);
@@ -479,6 +481,7 @@ public class AdvancedWebView extends BridgeWebView {
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
+				super.onPageFinished(view, url);
 				if (!hasError()) {
 					if (mListener != null) {
 						mListener.onPageFinished(url);
@@ -492,6 +495,7 @@ public class AdvancedWebView extends BridgeWebView {
 
 			@Override
 			public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+				super.onReceivedError(view, errorCode, description, failingUrl);
 				setLastError();
 
 				if (mListener != null) {
@@ -505,6 +509,8 @@ public class AdvancedWebView extends BridgeWebView {
 
 			@Override
 			public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
+				super.shouldOverrideUrlLoading(view, url);
+
 				// if the hostname may not be accessed
 				if (!isHostnameAllowed(url)) {
 					// if a listener is available
@@ -535,6 +541,8 @@ public class AdvancedWebView extends BridgeWebView {
 
 			@Override
 			public void onLoadResource(WebView view, String url) {
+				super.onLoadResource(view, url);
+
 				if (mCustomWebViewClient != null) {
 					mCustomWebViewClient.onLoadResource(view, url);
 				}
