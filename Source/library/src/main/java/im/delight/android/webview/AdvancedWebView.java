@@ -48,6 +48,9 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.webkit.WebView;
+
+import com.github.lzyzsd.jsbridge.BridgeWebView;
+
 import java.util.MissingResourceException;
 import java.util.Locale;
 import java.util.LinkedList;
@@ -59,7 +62,7 @@ import java.util.Map;
 
 /** Advanced WebView component for Android that works as intended out of the box */
 @SuppressWarnings("deprecation")
-public class AdvancedWebView extends WebView {
+public class AdvancedWebView extends BridgeWebView {
 
 	public interface Listener {
 		void onPageStarted(String url, Bitmap favicon);

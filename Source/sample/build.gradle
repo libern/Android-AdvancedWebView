@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "im.delight.android.examples.webview"
-        minSdkVersion 8
+        minSdkVersion 9
         targetSdkVersion 21
     }
 
