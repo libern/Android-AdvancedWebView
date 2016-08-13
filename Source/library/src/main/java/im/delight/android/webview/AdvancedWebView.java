@@ -509,7 +509,7 @@ public class AdvancedWebView extends BridgeWebView {
 
 			@Override
 			public boolean shouldOverrideUrlLoading(final WebView view, final String url) {
-				super.shouldOverrideUrlLoading(view, url);
+				boolean shouldOverrideUrlLoading = super.shouldOverrideUrlLoading(view, url);
 
 				// if the hostname may not be accessed
 				if (!isHostnameAllowed(url)) {
@@ -533,10 +533,10 @@ public class AdvancedWebView extends BridgeWebView {
 				}
 
 				// route the request through the custom URL loading method
-				view.loadUrl(url);
+//				view.loadUrl(url);
 
 				// cancel the original request
-				return true;
+				return shouldOverrideUrlLoading;
 			}
 
 			@Override
