@@ -462,6 +462,9 @@ public class AdvancedWebView extends BridgeWebView {
 
 		setThirdPartyCookiesEnabled(true);
 
+		// set default web view client if any
+		setWebViewClient(new WebViewClient());
+
 		super.setWebViewClient(new AdvancedWebViewClient(this){
 
 			@Override
